@@ -19,8 +19,8 @@ def value_of_card(card):
         return 10
     if card == 'A':
         return 1
-    else:
-        return int(card)
+    
+    return int(card)
     
 def higher_card(card_one, card_two):
     """Determine which card has a higher value in the hand.
@@ -35,10 +35,10 @@ def higher_card(card_one, card_two):
 
     if value_of_card(card_one) > value_of_card(card_two):
         return card_one
-    elif value_of_card(card_one) < value_of_card(card_two):
+    if value_of_card(card_one) < value_of_card(card_two):
         return card_two
-    else:
-        return (card_one, card_two)
+    
+    return (card_one, card_two)
     
 def value_of_ace(card_one, card_two):
     """Calculate the most advantageous value for the ace card.
@@ -79,3 +79,20 @@ def is_blackjack(card_one, card_two):
     
     return value == 21
 
+def can_split_pairs(card_one, card_two):
+    """Determine if a player can split their hand into two hands.
+
+    :param card_one, card_two: str - cards dealt.
+    :return: bool - can the hand be split into two pairs? (i.e. cards are of the same value).
+    """
+
+    return value_of_card(card_one) == value_of_card(card_two)
+
+def can_double_down(card_one, card_two):
+    """Determine if a blackjack player can place a double down bet.
+
+    :param card_one, card_two: str - first and second cards in hand.
+    :return: bool - can the hand can be doubled down? (i.e. totals 9, 10 or 11 points).
+    """
+
+    return value_of_card(card_one) + value_of_card(card_two) in [9, 10, 11]
