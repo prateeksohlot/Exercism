@@ -7,8 +7,9 @@ def translate(text:str) -> str:
 def pig_latinize(word:str) -> str:
 
 # Condition 1: If the first letter is a vowel, add 'ay' to the end
-    if word.startswith(vowels):
-        return word + 'ay'
+    # if word.startswith(vowels):
+    #     return word + 'ay'
+
     
     # To solve Yellow edge case
     if word.startswith('y'):
